@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import TabbarGeneralViewItem from './components/tabbarGeneralViewItem';
-import TabbarAddressViewItem from './components/tabbarAddressViewItem';
+import TabbarGeneralViewItem from './components/tabbarGeneralViewItem/tabbarGeneralViewItem';
 import TabbarSecurityViewItem from './components/tabbarSecurityViewItem';
 
 const StyledElement = styled.div`
@@ -11,16 +10,11 @@ const StyledElement = styled.div`
 `;
 
 function TabbarView() {
-    // const { selectedTab } = useSelector((state) => state.settingsTabBar);
-    const selectedTab = "General";
-
-
-    // const activeTabIndex = tabs.findIndex(tab => tab.key === selectedTab);
+    const { selectedTab } = useSelector((state) => state.settingsTabBar);
 
     return (
         <StyledElement>
             {selectedTab === 'General' && <TabbarGeneralViewItem />}
-            {selectedTab === 'Address' && <TabbarAddressViewItem />}
             {selectedTab === 'Security' && <TabbarSecurityViewItem />}
         </StyledElement>
     )

@@ -56,31 +56,46 @@ const StyledElement = styled.div`
   }
 `;
 const FormInput = React.forwardRef(
-    ({ name, label, type = 'text', icon = null, primaryColor = themes.common.login_background_color, isLoading = false }, ref = null) => {
-        const [field, meta] = useField(name);
-        return (
-            <StyledElement primaryColor={primaryColor}>
-                <label>{label}</label>
-                <div>
+  ({ name, label, type = 'text', icon = null, primaryColor = themes.common.login_background_color, isLoading = false, onChange = null }, ref = null) => {
+    const [field, meta, helpers] = useField(name);
 
-                    {
-                        isLoading ? <Skeleton variant='rounded' width="100%" height={44} animation="wave" style={{ 'borderRadius': 12 }} />
-                            : <>
-                                {icon && <div className="icon-box">{icon}</div>}
-                                <input {...field} type={type} ref={ref}></input>
-                            </>
-                    }
+    const handleChange = (event) => {
+      field.onChange(event); // Formik alanının değerini güncelleyin
 
-                    <div className="invalid-feedback">
-                        {meta.touched && !!meta.error ? <div>{meta.error}</div> : null}
-                    </div>
-                </div>
-            </StyledElement>
-        );
-    }
+      // onChange prop'unu çağır, eğer varsa
+      if (onChange) {
+        onChange(event.target.value);
+      }
+
+      // helpers.setValue ile değeri güncelle
+      helpers.setValue(event.target.value);
+
+    };
+
+
+    return (
+      <StyledElement primaryColor={primaryColor}>
+        <label>{label}</label>
+        <div>
+
+          {
+            isLoading ? <Skeleton variant='rounded' width="100%" height={44} animation="wave" style={{ 'borderRadius': 12 }} />
+              : <>
+                {icon && <div className="icon-box">{icon}</div>}
+                <input {...field} type={type} onChange={handleChange} ref={ref}></input>
+              </>
+          }
+
+          <div className="invalid-feedback">
+            {meta.touched && !!meta.error ? <div>{meta.error}</div> : null}
+          </div>
+        </div>
+      </StyledElement>
+    );
+  }
 );
 FormInput.propTypes = {
-    label: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 export default FormInput;

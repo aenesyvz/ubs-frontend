@@ -6,6 +6,7 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import SidebarLogo from './components/sidebarLogo/sidebarLogo';
 import Navigations from './components/navigations/navigations';
 import AccountSwitcher from './components/account_switcher';
+import { handleOpenSidebar } from '../../actions/actions';
 
 
 const StyledElement = styled.aside`
@@ -45,17 +46,15 @@ const StyledElement = styled.aside`
 `;
 
 function SideBar() {
-  //const { isOpen } = useSelector((state) => state.sidebar);
+  const { isOpen } = useSelector((state) => state.sidebar);
   return (
-    <StyledElement isOpen={true}>
-
+    <StyledElement isOpen={isOpen}>
       <div className='close-icon'>
-        <NavigateBeforeIcon fill={themes.common.black_color} height={32} width={32} />
+        <NavigateBeforeIcon onClick={() => handleOpenSidebar(false)} fill={themes.admin.primary} height={32} width={32} />
       </div>
       <SidebarLogo />
       <AccountSwitcher />
       <Navigations />
-      {/* <Version /> */}
     </StyledElement>
   );
 }

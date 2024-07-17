@@ -10,12 +10,11 @@ const StyledElement = styled.div`
 `;
 
 function Tabbar() {
-    // const { selectedTab } = useSelector((state) => state.settingsTabBar);
 
     return (
         <>
             <StyledElement>
-                <TabbarHeader onSelectTab={null} selectedTab={null} />
+                <TabbarHeader />
             </StyledElement>
             <TabbarView></TabbarView>
         </>

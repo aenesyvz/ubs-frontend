@@ -47,25 +47,25 @@ const StyledElement = styled.div`
 
 
 function Header({ title, subItem, primaryColor = themes.common.login_background_color }) {
-    useDocumentTitle(`${title} - ${configs.projectName}`);
+  useDocumentTitle(`${title} - ${configs.projectName}`);
 
-    return (
-        <StyledElement>
-            <div className="header_start">
-                <div className="title">{title}</div>
-                {subItem && <>{subItem}</>}
-            </div>
-            <div className="header_tools">
-                <SearchField placeholder="What are you searching for..." primaryColor={primaryColor} />
-                <Notifications primaryColor={primaryColor} />
-            </div>
-        </StyledElement>
-    );
+  return (
+    <StyledElement>
+      <div className="header_start">
+        <div className="title">{title}</div>
+        {subItem && <>{subItem}</>}
+      </div>
+      <div className="header_tools">
+        <SearchField placeholder="What are you searching for..." primaryColor={primaryColor} />
+        <Notifications primaryColor={primaryColor} />
+      </div>
+    </StyledElement>
+  );
 }
 
 Header.propTypes = {
-    title: PropTypes.string.isRequired,
-    subItem: PropTypes.element,
+  title: PropTypes.string.isRequired,
+  subItem: PropTypes.element,
 };
 
 export default Header;

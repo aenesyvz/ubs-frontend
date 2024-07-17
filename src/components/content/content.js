@@ -16,7 +16,7 @@ const StyledElement = styled.main`
 function Content({ children }) {
     return (
         <StyledElement>
-            <>{children}</>
+            {children}
         </StyledElement>
     );
 }
