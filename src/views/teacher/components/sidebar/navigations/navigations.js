@@ -1,13 +1,12 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Logout, Settings } from '@mui/icons-material';
-import DomainIcon from '@mui/icons-material/Domain';
 import NavigationItem from './navigation_item';
 import { useNavigate } from 'react-router-dom';
-import SectionTitle from '../section_title/sectionTitle';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import SectionTitle from '../../../../../components/sidebar/components/section_title/sectionTitle';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import ChatIcon from '@mui/icons-material/Chat';
 
 const StyledElement = styled.div`
   display: flex;
@@ -35,29 +34,24 @@ function Navigations() {
 
     const navigations = [
         {
-            icon: <BusinessCenterIcon fill="#fff" />,
-            text: 'Students',
-            href: '/admin/students',
+            icon: <ChatIcon fill="#fff" />,
+            text: 'Chats',
+            href: '/teacher/chats',
         },
         {
             icon: <PersonPinIcon fill="#fff" />,
-            text: 'Teacher',
-            href: '/admin/teachers',
+            text: 'Students',
+            href: '/teacher/students',
         },
         {
-            icon: <AccountBalanceIcon fill="#fff" />,
-            text: 'Deparment',
-            href: '/admin/departments',
-        },
-        {
-            icon: <DomainIcon fill="#fff" />,
-            text: 'Faculty',
-            href: '/admin/faculties',
+            icon: <BusinessCenterIcon fill="#fff" />,
+            text: 'Lessons',
+            href: '/teacher/lessons',
         },
         {
             icon: <Settings fill="#fff" />,
             text: 'Settings',
-            href: '/admin/settings',
+            href: '/teacher/settings',
         },
         {
             icon: <Logout fill="#fff" />,
